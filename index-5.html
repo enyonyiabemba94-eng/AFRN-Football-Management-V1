@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AFRN Football Management</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}header{background:#075b36;color:#fff;padding:18px}header h1{margin:0;font-size:22px}header p{margin:6px 0 0;font-size:13px;opacity:.9}nav{display:flex;gap:8px;overflow-x:auto;padding:10px;background:#fff;box-shadow:0 2px 8px #0001}nav a{border:0;background:#eef3f0;padding:10px 14px;border-radius:8px;white-space:nowrap;font-weight:bold;color:#075b36;text-decoration:none}nav a.active{background:#075b36;color:#fff}main{padding:16px;max-width:1100px;margin:auto}.page{display:none}.page.active{display:block}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px #0001}.card h3{margin:0 0 8px;font-size:14px;color:#667085}.number{font-size:28px;font-weight:bold;color:#075b36}.empty{background:#fff;padding:24px;text-align:center;border-radius:12px;color:#667085}.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#e8f6ee;color:#075b36;font-size:12px;font-weight:bold}@media(min-width:700px){.cards{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><h1>AFRN FOOTBALL MANAGEMENT</h1><p>Association/Football Federation for Refugees in Nyarugusu</p></header>
+<nav>
+<a href="#dashboard" data-page="dashboard">Dashboard</a>
+<a href="#players" data-page="players">Wachezaji</a>
+<a href="#clubs" data-page="clubs">Vilabu</a>
+<a href="#transfers" data-page="transfers">Uhamisho</a>
+<a href="#competitions" data-page="competitions">Mashindano</a>
+<a href="#matches" data-page="matches">Ratiba/Matokeo</a>
+<a href="#standings" data-page="standings">Msimamo</a>
+</nav>
+<main>
+<section id="dashboard" class="page"><h2>Dashboard</h2><div class="cards"><div class="card"><h3>Wachezaji</h3><div class="number">0</div><span class="badge">Tayari kuingiza</span></div><div class="card"><h3>Vilabu</h3><div class="number">0</div><span class="badge">Tayari kuingiza</span></div><div class="card"><h3>Mashindano</h3><div class="number">0</div><span class="badge">Tayari kuingiza</span></div><div class="card"><h3>Mechi</h3><div class="number">0</div><span class="badge">Tayari kuingiza</span></div></div><h2>Karibu AFRN</h2><div class="empty">Mfumo umeanzishwa bila data za mfano. Data zako zitaongezwa baada ya kuunganisha Supabase.</div></section>
+<section id="players" class="page"><h2>Wachezaji</h2><div class="empty">Hakuna mchezaji aliyeingizwa bado.</div></section>
+<section id="clubs" class="page"><h2>Vilabu</h2><div class="empty">Hakuna klabu iliyoingizwa bado.</div></section>
+<section id="transfers" class="page"><h2>Uhamisho</h2><div class="empty">Hakuna taarifa za uhamisho bado.</div></section>
+<section id="competitions" class="page"><h2>Mashindano</h2><div class="empty">Hakuna mashindano yaliyoingizwa bado.</div></section>
+<section id="matches" class="page"><h2>Ratiba na Matokeo</h2><div class="empty">Hakuna ratiba au matokeo bado.</div></section>
+<section id="standings" class="page"><h2>Msimamo wa Ligi</h2><div class="empty">Msimamo utaonekana baada ya kuingiza timu na matokeo.</div></section>
+</main>
+<script>
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const page=document.getElementById(id);
+ if(page) page.classList.add('active');
+ document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===id));
+}
+function openFromHash(){showPage(location.hash.replace('#','')||'dashboard')}
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>showPage(a.dataset.page)));
+window.addEventListener('hashchange',openFromHash);
+openFromHash();
+</script>
+</body>
+</html>
